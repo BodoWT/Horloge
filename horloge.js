@@ -1,4 +1,7 @@
-
+let heure = parseInt(document.getElementById("heure").textContent);
+let minute = parseInt(document.getElementById("minu").textContent);
+let seconde = parseInt(document.getElementById("seco").textContent);
+let alarme = new Audio("/sound/sound1.mp3");
 
 function updateClock() {
     let now = new Date();
@@ -15,9 +18,19 @@ function updateClock() {
     for(let i = 0; i < tags.length; i++){
         document.getElementById(tags[i]).firstChild.nodeValue = corr[i];
     };
+    if (hou == heure && min == minute && sec == seconde) {
+        playSound(alarme); 
+    }
+}
+
+function playSound(sound) {
+    sound.play();
 }
 
 function initClock(){
     updateClock();
     window.setInterval("updateClock()", 1);
 };
+
+
+
