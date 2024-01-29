@@ -1,7 +1,8 @@
-let heure = parseInt(document.getElementById("heure").textContent);
-let minute = parseInt(document.getElementById("minu").textContent);
-let seconde = parseInt(document.getElementById("seco").textContent);
 let alarme = new Audio("/sound/sound1.mp3");
+
+function playSound(sound) {
+    sound.play();
+}
 
 function updateClock() {
     let now = new Date();
@@ -18,19 +19,25 @@ function updateClock() {
     for(let i = 0; i < tags.length; i++){
         document.getElementById(tags[i]).firstChild.nodeValue = corr[i];
     };
-    if (hou == heure && min == minute && sec == seconde) {
+//Pour lancer l'alarme avec les valeurs choisie
+    let heureChoisie = parseInt(document.getElementById("heure-choisie").value);
+    let minuteChoisie = parseInt(document.getElementById("minute-choisie").value);
+
+    if (hou === heureChoisie && min === minuteChoisie && sec < 15) {
         playSound(alarme); 
     }
 }
-
-function playSound(sound) {
-    sound.play();
+// Pour modifier les valeur dans mon alarme et définir une heure
+function updateAlarme() {
+    let heureChoisie = parseInt(document.getElementById("heure-choisie").value);
+    let minuteChoisie = parseInt(document.getElementById("minute-choisie").value);
+    heure =  heureChoisie;
+    minute = minuteChoisie;
+    document.getElementById("heure").textContent = heureChoisie  + "H";
+    document.getElementById("minu").textContent = minuteChoisie  + "Min";
 }
 
 function initClock(){
     updateClock();
-    window.setInterval("updateClock()", 1);
+    window.setInterval(updateClock);
 };
-
-
-

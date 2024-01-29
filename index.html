@@ -17,11 +17,17 @@
         <a id="s">00</a>
         <a id="mi">000</a>
     </div>
+    <!-- Alarme -->
     <div id="alarme">
-        <a id="heure">11</a>
-        <a id="minu">25</a> 
-        <a id="seco">40</a> 
+        <a id="heure">Heure(s)</a>
+        <a id="minu">Minute(s)</a> 
     </div>
+    <!-- Modifier l'heure de l'alarme -->
+<div id="alarmeinit">
+    <input type="number" id="heure-choisie" min="0" max="23" placeholder="Heure">
+    <input type="number" id="minute-choisie" min="0" max="59" placeholder="Minute">
+    <button onclick="updateAlarme()" class="bouton">Mettre une alarme</button>
+</div>
 <script src="./horloge.js"></script>
 </body>
 </html>
